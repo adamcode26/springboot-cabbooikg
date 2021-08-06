@@ -57,9 +57,16 @@ public class CustomerController {
 		return customerServ.viewCustomer(customerId);
 	}
 	
-	/*@PutMapping("/validate/{username}/{password}")
-	public Customer validateCustomer(@PathVariable("username") String username, @PathVariable("password") String password) {
-		return customerServ.validateCustomer(username, password);
-	}*/
+	 @PostMapping("/validate")
+	    public ResponseEntity<Customer> validateUser(@RequestBody Customer customer){
+	                String user=customer.getUsername();
+	                String pass = customer.getPassword();
+	                Customer valid = customerServ.validateCustomer(user,pass);
+	                if(valid!=null){
+	                    return new ResponseEntity(valid, HttpStatus.ACCEPTED);
+	                }
+
+	                return new ResponseEntity("Sorry No customer available", HttpStatus.NOT_FOUND);
+	    }
 	
 }

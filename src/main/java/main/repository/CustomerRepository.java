@@ -9,7 +9,7 @@ import main.entity.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-	/*@Query("SELECT c FROM Customer c WHERE LOWER(c.username)=LOWER(:username) AND c.password = :password ")
-    Customer validateCustomer(@Param("customer") String username, @Param("password") String password);*/
+	 @Query("SELECT c FROM Customer c WHERE LOWER(c.username)=LOWER(:username) AND c.password = :password ")
+	    Customer validateCustomer(@Param("username") String username, @Param("password") String password);
 }
 

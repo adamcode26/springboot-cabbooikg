@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.entity.Cab;
+import main.entity.TripBooking;
 import main.repository.CabRepository;
 
 @Service
@@ -33,6 +34,11 @@ public class CabServices {
 	public List<Cab> viewCab(String carType){
 		List<Cab> cars = cabRepo.viewCab(carType);
 		return cars;
+	}
+	
+	public List<Cab> viewAllCabs(){
+		List<Cab> cabs = cabRepo.findAll();
+		return cabs;
 	}
 
 }

@@ -43,7 +43,12 @@ public class CustomerServices {
 		return customerRepo.findAll();
 	}
 	
-	/*public Customer validateCustomer(String username, String password) {
-		return customerRepo.validateCustomer(username,password);
-	}*/
+	public Customer validateCustomer(String username,String password){
+        Customer customer = customerRepo.validateCustomer(username,password);
+        if(customer!=null)
+            return customer;
+//            customerRepository.findAll();
+        System.out.println("Wrong UserName Or Password");
+        return null;
+    }
 }

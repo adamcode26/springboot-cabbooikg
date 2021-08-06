@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import main.entity.Cab;
 import main.entity.Customer;
+import main.entity.TripBooking;
 import main.services.CabServices;
 
 @CrossOrigin
@@ -58,5 +59,17 @@ public class CabController {
 		}
 		return new ResponseEntity<List <Cab>>(cars, HttpStatus.OK);*/
 	}
+	
+	@GetMapping("/viewcab")
+	public ResponseEntity <List<Cab>> viewAllcab(){
+		
+		List <Cab> cabs = cabServ.viewAllCabs();
+		
+		if(cabs.isEmpty()) {
+			return new ResponseEntity("Sorry No customer available", HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List <Cab> >(cabs, HttpStatus.OK);
+	}
+	
 
 }
