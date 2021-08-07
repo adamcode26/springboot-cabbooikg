@@ -24,4 +24,7 @@ public interface AdminRepository extends JpaRepository <Admin, Integer> {
 	@Query("SELECT t FROM TripBooking t WHERE t.customer.cusId = :customerId AND t.fromDate >= :fromDate AND t.toDate <= :toDate")
 	List<TripBooking> getAllTripsForDays(@Param("customerId") int customerId, 
 			@Param("fromDate") Date fromDate, @Param("toDate") Date toDate );
+	
+	@Query("SELECT a FROM Admin a WHERE LOWER(a.username)=LOWER(:username) AND a.password = :password ")
+    Admin validateAdmin(@Param("username") String username, @Param("password") String password);
 }

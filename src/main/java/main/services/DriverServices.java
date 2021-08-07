@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import main.entity.Admin;
 import main.entity.Driver;
 import main.repository.DriverRepository;
 
@@ -36,6 +37,10 @@ public class DriverServices {
 	
 	public List<Driver> viewFreeDriver(){
 		return driverRepo.viewFreeDriver();
+	}
+	
+	public Driver validateDriver(String username, String password) {
+		return driverRepo.validateDriver(username, password);
 	}
 
 

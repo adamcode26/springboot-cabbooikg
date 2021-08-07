@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import main.entity.Admin;
 import main.entity.Customer;
 import main.entity.Driver;
 import main.services.DriverServices;
@@ -64,5 +65,17 @@ public class DriverController {
             return new ResponseEntity("sorry No driver found",HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(driver,HttpStatus.OK);
+    }
+	
+	@PostMapping("/validate")
+    public ResponseEntity<Driver> validateUser(@RequestBody Driver driver){
+                String user=driver.getUsername();
+                String pass = driver.getPassword();
+                Driver valid = driverServ.validateDriver(user,pass);
+                if(valid!=null){
+                    return new ResponseEntity(valid, HttpStatus.ACCEPTED);
+                }
+
+                return new ResponseEntity("Sorry No customer available", HttpStatus.NOT_FOUND);
     }
 }

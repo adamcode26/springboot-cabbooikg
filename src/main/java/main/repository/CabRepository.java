@@ -20,5 +20,8 @@ public interface CabRepository extends JpaRepository<Cab, Integer>{
 	@Query("SELECT c FROM Cab c WHERE LOWER(c.carType) = LOWER(:carType)")
 	List<Cab> viewCab(@Param("carType") String carType);
 	
+	@Query("select c from Cab c where c.cabId NOT IN (select d.cab.cabId from Driver d)")
+	List <Cab> viewFreeCabs();
+	
 	
 }

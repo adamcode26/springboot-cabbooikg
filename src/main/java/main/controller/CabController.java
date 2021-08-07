@@ -60,10 +60,10 @@ public class CabController {
 		return new ResponseEntity<List <Cab>>(cars, HttpStatus.OK);*/
 	}
 	
-	@GetMapping("/viewcab")
+	@GetMapping("/viewfreecab")
 	public ResponseEntity <List<Cab>> viewAllcab(){
 		
-		List <Cab> cabs = cabServ.viewAllCabs();
+		List <Cab> cabs = cabServ.viewFreeCabs();
 		
 		if(cabs.isEmpty()) {
 			return new ResponseEntity("Sorry No customer available", HttpStatus.NOT_FOUND);

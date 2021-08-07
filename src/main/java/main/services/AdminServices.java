@@ -47,5 +47,8 @@ public class AdminServices {
 		return trips;
 	}
 	
+	public Admin validateAdmin(String username, String password) {
+		return adminRepo.validateAdmin(username, password);
+	}
 	
 }

@@ -67,4 +67,16 @@ public class AdminController {
 		}
 		return new ResponseEntity<List <TripBooking> >(trips, HttpStatus.OK); 
 	}
+	
+	@PostMapping("/validate")
+    public ResponseEntity<Admin> validateUser(@RequestBody Admin admin){
+                String user=admin.getUsername();
+                String pass = admin.getPassword();
+                Admin valid = adminServ.validateAdmin(user,pass);
+                if(valid!=null){
+                    return new ResponseEntity(valid, HttpStatus.ACCEPTED);
+                }
+
+                return new ResponseEntity("Sorry No customer available", HttpStatus.NOT_FOUND);
+    }
 }

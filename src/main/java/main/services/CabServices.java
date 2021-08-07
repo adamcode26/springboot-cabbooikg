@@ -36,8 +36,8 @@ public class CabServices {
 		return cars;
 	}
 	
-	public List<Cab> viewAllCabs(){
-		List<Cab> cabs = cabRepo.findAll();
+	public List<Cab> viewFreeCabs(){
+		List<Cab> cabs = cabRepo.viewFreeCabs();
 		return cabs;
 	}
 
