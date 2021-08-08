@@ -34,7 +34,7 @@ public class DriverController {
 		
 	}
 	
-	@PutMapping("/update")
+	@PostMapping("/update")
 	public void updateDriver(@RequestBody Driver driver) {
 		driverServ.updateDriver(driver);
 	}
@@ -52,6 +52,15 @@ public class DriverController {
 	@GetMapping("/getbestdriver")
     public ResponseEntity<List<Driver>> viewBestDrivers(){
         List<Driver> driver=driverServ.viewBestDriver();
+        if(driver.isEmpty()){
+            return new ResponseEntity("sorry No driver found",HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(driver,HttpStatus.OK);
+    }
+	
+	@GetMapping("/getalldriver")
+    public ResponseEntity<List<Driver>> viewAllDrivers(){
+        List<Driver> driver=driverServ.viewAllDriver();
         if(driver.isEmpty()){
             return new ResponseEntity("sorry No driver found",HttpStatus.NOT_FOUND);
         }

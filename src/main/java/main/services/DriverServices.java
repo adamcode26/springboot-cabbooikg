@@ -42,6 +42,10 @@ public class DriverServices {
 	public Driver validateDriver(String username, String password) {
 		return driverRepo.validateDriver(username, password);
 	}
+	
+	public List<Driver> viewAllDriver(){
+		return driverRepo.findAll();
+	}
 
 
 }
