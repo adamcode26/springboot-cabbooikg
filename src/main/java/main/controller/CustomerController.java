@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import main.entity.Customer;
+import main.entity.TripBooking;
 import main.services.CustomerServices;
 
 @CrossOrigin
@@ -47,7 +48,7 @@ public class CustomerController {
 		customerServ.deleteCustomer(customerId);
 	}
 	
-	@PutMapping("/update")
+	@PostMapping("/update")
 	public void updateCustomer(@RequestBody Customer customer) {
 		customerServ.updateCustomer(customer);
 	}
